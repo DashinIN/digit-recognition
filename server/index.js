@@ -38,7 +38,7 @@ async function preprocessImage(imageBuffer) {
 
 app.use('/model', express.static(path.join(__dirname, 'model')));
 
-const modelPath = '/model/model.json'
+const modelPath = 'https://digit-recognition-api.onrender.com/model/model.json'
 
 app.post('/classify', upload.single('image'), async (req, res) => {
   try {
