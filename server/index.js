@@ -3,6 +3,7 @@ const multer = require('multer');
 const tf = require('@tensorflow/tfjs-node');
 const Jimp = require('jimp');
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
 const port = 5000;
@@ -12,8 +13,10 @@ const upload = multer({ storage: storage });
 app.use(express.json());
 app.use(cors());
 
+const relativePath = '/model/model.json';
+const modelPath = path.join(__dirname, relativePath);
 
-const modelPath = '/model/model.json'; 
+console.log(modelPath);
 
 async function preprocessImage(imageBuffer) {
   try {
