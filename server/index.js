@@ -36,7 +36,7 @@ async function preprocessImage(imageBuffer) {
   }
 }
 
-
+app.use(express.static('/model/model.json'));
 
 const modelPath = 'https://digit-recognition-api.onrender.com/model/model.json'
 
