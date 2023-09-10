@@ -17,7 +17,7 @@ const App = () => {
     try {
       const formData = new FormData();
       formData.append('image', selectedFile);
-      const response = await axios.post('http://localhost:5000/classify', formData);
+      const response = await axios.post('https://digit-recognition-api.onrender.com/classify', formData);
       if (response.status !== 200) {
         throw new Error('Ошибка при отправке запроса');
       }

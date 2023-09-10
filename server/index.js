@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(cors());
 
 
-const modelPath = 'C:/Users/igree/Desktop/is_lr1/server/model/model.json'; 
+const modelPath = '/model/model.json'; 
 
 async function preprocessImage(imageBuffer) {
   try {
