@@ -13,11 +13,6 @@ const upload = multer({ storage: storage });
 app.use(express.json());
 app.use(cors());
 
-const relativePath = '/model/model.json';
-const modelPath = path.join(__dirname, relativePath);
-
-console.log(modelPath);
-
 async function preprocessImage(imageBuffer) {
   try {
     const image = await Jimp.read(imageBuffer);
@@ -41,9 +36,11 @@ async function preprocessImage(imageBuffer) {
   }
 }
 
+const modelPath = '/model/model.json'
+
 app.post('/classify', upload.single('image'), async (req, res) => {
   try {
-    const model = await tf.loadLayersModel('file://' + modelPath);
+    const model = await tf.loadLayersModel(modelPath);
     const image = req.file.buffer;
     const grayscaleImage = await preprocessImage(image);
 
