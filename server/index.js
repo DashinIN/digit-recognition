@@ -36,13 +36,15 @@ async function preprocessImage(imageBuffer) {
   }
 }
 
-app.use('/model', express.static(path.join(__dirname, 'model')));
 
-const modelPath = 'https://digit-recognition-api.onrender.com/model/model.json'
+const modelPath = 'C:/Users/igree/Desktop/is_lr1/server/model/model.json'; 
+
+// app.use('/model', express.static(path.join(__dirname, 'model')));
+// const modelPath = 'https://digit-recognition-api.onrender.com/model/model.json'
 
 app.post('/classify', upload.single('image'), async (req, res) => {
   try {
-    const model = await tf.loadLayersModel(modelPath);
+    const model = await tf.loadLayersModel('file://' + modelPath);
     const image = req.file.buffer;
     const grayscaleImage = await preprocessImage(image);
 
