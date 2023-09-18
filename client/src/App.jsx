@@ -71,7 +71,7 @@ const App = () => {
       </label>
       {renderSelectedImage()}
       {selectedFile && <button onClick={handleUpload} className='upload__button'>Recognize</button>}
-      {isLoading && <div>load...</div>}
+      {isLoading && <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>}
       {error && <div>error</div>}
       {result !== null && (
         <div className='results__wrapper'>
